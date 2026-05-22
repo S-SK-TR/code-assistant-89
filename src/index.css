@@ -76,3 +76,8 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+/* Safe Area for Mobile Devices */
+:root {
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+}

@@ -2,6 +2,7 @@ import { NavLink, Outlet } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { LayoutDashboard, Code2, Settings, LogOut, Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import { MobileBottomNav } from '../navigation/MobileBottomNav'
 
 const navItems = [
   { to: '/workspace', icon: LayoutDashboard, label: 'Workspace' },
@@ -87,21 +88,7 @@ export function AppShell({ children }: AppShellProps) {
       </div>
 
       {/* Mobile Bottom Navigation */}
-      <nav className="md:hidden fixed bottom-0 inset-x-0 z-50 bg-[var(--bg-surface)]/90 backdrop-blur-md border-t border-[var(--border-glass)]">
-        <div className="flex h-16">
-          {navItems.map(({ to, icon: Icon, label }) => (
-            <NavLink
-              key={to}
-              to={to}
-              end
-              className={({ isActive }) => `flex-1 flex flex-col items-center justify-center gap-1 text-xs font-medium transition-colors ${isActive ? 'text-ai-500' : 'text-[var(--text-secondary)]'}`}
-            >
-              <Icon size={20} />
-              {label}
-            </NavLink>
-          ))}
-        </div>
-      </nav>
+      <MobileBottomNav />
     </div>
   )
 }
