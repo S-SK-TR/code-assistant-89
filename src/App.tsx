@@ -1,28 +1,10 @@
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
-import { AppShell } from './components/layout/AppShell'
+import React from 'react';
 
-function App() {
-  const location = useLocation()
-
+export default function App() {
   return (
-    <AppShell>
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={location.pathname}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-        >
-          <Routes>
-            <Route path="/" element={<Navigate to="/workspace" replace />} />
-            <Route path="*" element={<Navigate to="/workspace" replace />} />
-          </Routes>
-        </motion.div>
-      </AnimatePresence>
-    </AppShell>
-  )
+    <div style={{textAlign:'center',marginTop:'5rem'}}> 
+      <h1>CodeAssistant - AI Kod Yardımcısı</h1>
+      <p>Uygulama başarıyla oluşturuldu!</p>
+    </div>
+  );
 }
-
-export default App

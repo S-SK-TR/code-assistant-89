@@ -1,37 +1,78 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --bg-base: #02040a;
-  --bg-surface: #090d16;
+/* ── Dark Mode Tokens ── */
+.dark {
+  --background: 222 47% 5%;
+  --foreground: 210 20% 98%;
+  --bg-base: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-glow: rgba(59, 130, 246, 0.1);
   --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --border-glass: rgba(255, 255, 255, 0.06);
-  --shadow-glass: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --text-muted: #94a3b8;
+  --brand-500: 217 91% 60%;
 }
 
-.dark {
-  --bg-base: #02040a;
-  --bg-surface: #090d16;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
+/* ── Light Mode Tokens ── */
+.light {
+  --background: 0 0% 98%;
+  --foreground: 222 47% 11%;
+  --bg-base: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-glow: rgba(59, 130, 246, 0.08);
+  --text-primary: #0f172a;
+  --text-muted: #64748b;
+  --brand-500: 217 91% 60%;
 }
 
 body {
-  @apply bg-[var(--bg-base)] text-[var(--text-primary)] font-sans antialiased;
-  background-image: radial-gradient(circle at 10% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 20%),
-                   radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 20%);
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Tema geçişleri için sadece body'de transition */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Premium Glassmorphism */
 .glass-card {
-  @apply bg-[var(--bg-surface)] border border-[var(--border-glass)] rounded-xl shadow-[var(--shadow-glass)] backdrop-blur-md;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-.ai-glow {
-  @apply animate-pulse-glow;
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.code-block {
-  @apply font-mono text-sm bg-[var(--bg-surface)] rounded-md p-4 border border-[var(--border-glass)];
+/* Yardımcı geçiş sınıfı — Framer Motion kullanılmayan öğeler için */
+.smooth-transition {
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+              color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
