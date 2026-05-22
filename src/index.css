@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base: #02040a;
+  --bg-surface: #090d16;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-glass: rgba(255, 255, 255, 0.06);
+  --shadow-glass: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.dark {
+  --bg-base: #02040a;
+  --bg-surface: #090d16;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+}
+
+body {
+  @apply bg-[var(--bg-base)] text-[var(--text-primary)] font-sans antialiased;
+  background-image: radial-gradient(circle at 10% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 20%),
+                   radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 20%);
+}
+
+.glass-card {
+  @apply bg-[var(--bg-surface)] border border-[var(--border-glass)] rounded-xl shadow-[var(--shadow-glass)] backdrop-blur-md;
+}
+
+.ai-glow {
+  @apply animate-pulse-glow;
+}
+
+.code-block {
+  @apply font-mono text-sm bg-[var(--bg-surface)] rounded-md p-4 border border-[var(--border-glass)];
+}
